@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "Segoe-UI";
+  src: url("../../../../src/assets/fonts/Segoe-UI-Font/Segoe.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe-UI-Light";
+  src: url("../../../../src/assets/fonts/Segoe-UI-Font/SegoeLight.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe-UI-Semi-Light";
+  src: url("../../../../src/assets/fonts/Segoe-UI-Font/SegoeSemiLight.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe-UI-Semi-Bold";
+  src: url("../../../../src/assets/fonts/Segoe-UI-Font/SegoeSemiBold.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe-UI-Bold";
+  src: url("../../../../src/assets/fonts/Segoe-UI-Font/SegoeBold.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$normal: "Segoe-UI";
+$semiLight: "Segoe-UI-Semi-Light";
+$light: "Segoe-UI-Light";
+$bold: "Segoe-UI-Bold";
+$semiBold: "Segoe-UI-Semi-Bold";
