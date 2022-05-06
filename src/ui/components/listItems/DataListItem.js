@@ -5,6 +5,7 @@ import { formatDistance } from "utils/formatDistance";
 import { calcTimeDiff } from "utils/calcTimeDiff";
 
 import { Touchable } from "..";
+import Badge from "./Badge";
 import frontIco from "assets/icons/front.png";
 
 function DataListItem({ item, action }) {
@@ -15,7 +16,14 @@ function DataListItem({ item, action }) {
         action(item.id);
       }}
     >
-      <img src={getOriginal(item.logo)} alt="list-item-logo" className="logo" />
+      <div className="logo-container">
+        {item.coupon_count > 0 && <Badge text={item.coupon_count} />}
+        <img
+          src={getOriginal(item.logo)}
+          alt="list-item-logo"
+          className="logo"
+        />
+      </div>
       <div className="text-container">
         <span className="title">{item.title}</span>
         <span className="sub-title">{item.description}</span>

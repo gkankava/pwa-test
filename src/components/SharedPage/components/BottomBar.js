@@ -9,6 +9,7 @@ import star from "assets/icons/cutomPage/starWhite.png";
 import starActive from "assets/icons/cutomPage/star_active.png";
 import share from "assets/icons/cutomPage/share.png";
 import { Touchable } from "ui/components";
+import { theme } from "ui";
 
 function BottomBar({
   onShare,
@@ -20,19 +21,25 @@ function BottomBar({
   toogleLike,
 }) {
   return (
-    <div className="bottom-bar" style={{ marginBottom: hasHomeBar() ? 20 : 0 }}>
+    <div
+      className="bottom-bar"
+      style={{
+        paddingBottom: hasHomeBar() ? 30 : theme.spacing.m,
+        height: hasHomeBar() ? 75 : 50,
+      }}
+    >
       <Touchable className="toogle-btn-container" action={toogle}>
         <img src={tooglePlus} alt="toogle-ico-1" />
         <img src={listIco} alt="toogle-ico-2" />
       </Touchable>
       <div className="right-container">
-        <Touchable>
+        <Touchable action={openMapModal}>
           <img src={location} alt="location-ico" />
         </Touchable>
         <div className="divider" />
         {coupon_count && coupon_count > 0 ? (
           <>
-            <Touchable>
+            <Touchable action={openBsC}>
               <img src={couponIcon} alt="coupon-ico" />
             </Touchable>
             <div className="divider" />

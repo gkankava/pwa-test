@@ -15,6 +15,7 @@ import {
 import { ListView, GridView, CoverView } from "./viewModes";
 import BSModal from "./BSModal";
 import PrivateModal from "./PrivateModal";
+import Keyword from "./Keyword";
 
 export {
   AppLoading,
@@ -35,4 +36,5 @@ export {
   DataCoverItem,
   BSModal,
   PrivateModal,
+  Keyword,
 };

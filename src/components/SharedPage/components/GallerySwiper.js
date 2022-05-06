@@ -18,7 +18,7 @@ function GallerySwiper({ data: { data } }) {
         {data.map((i, k) => (
           <SwiperSlide key={k}>
             {i.image ? (
-              <img src={getOriginal(i.image)} alt="gallery-image" />
+              <img src={getOriginal(i.image)} alt="gallery-slide" />
             ) : (
               <video
                 autoPlay

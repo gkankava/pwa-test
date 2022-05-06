@@ -8,7 +8,7 @@ import mail from "assets/icons/mail.png";
 import web from "assets/icons/web.png";
 
 function Header({ data }) {
-  const { logo, title, description, available_locations } = data;
+  const { logo, title, description } = data;
   return (
     <div className="header">
       <BackButton styleType="light" />

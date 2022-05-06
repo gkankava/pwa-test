@@ -117,11 +117,35 @@
     background-color: rgba(56, 56, 56, 0.3);
     backdrop-filter: blur(10px);
     transition: all 0.3s;
+    border-top: 0.5px solid rgba($color: white, $alpha: 0.5);
+    padding: 5px 10px;
+    h3 {
+      margin: 0;
+      font-size: 24px;
+      font-family: $light;
+      margin-bottom: 10px;
+      color: white;
+    }
+    .content-container {
+      width: 100%;
+      overflow-y: scroll;
+      font-size: 14px;
+      color: white;
+      font-family: $light;
+      height: 100%;
+      .keywords-container {
+        padding: $l 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
   }
 
   .bottom-bar {
+    background-color: black;
     width: 100%;
-    height: 50px;
+
     padding: $m;
     z-index: 15;
     display: flex;
@@ -163,6 +187,63 @@
       height: 100%;
       margin: 0 15px;
       background-color: white;
+    }
+  }
+}
+
+.coupon-list-item {
+  width: 100%;
+  height: 120px;
+  border-radius: 5px;
+  border: 1px solid $whiteDiv;
+  padding: 10px;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  .obj-mask {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-right: 1px solid $whiteDiv;
+    top: 35px;
+    left: -25px;
+    background-color: white;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border-right: 1px solid $whiteDiv;
+  }
+  .dashed-divider {
+    width: 1px;
+    height: 100%;
+    margin: 0 8.5px 0 7.5px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='8' stroke-dasharray='2%2c 14' stroke-dashoffset='5' stroke-linecap='butt'/%3e%3c/svg%3e");
+  }
+  .content-container {
+    height: 100%;
+    flex: 1;
+    .cp-header {
+      margin: 0;
+      font-family: $light;
+      font-size: 16px;
+      color: #707070;
+    }
+    .price-container {
+      display: flex;
+      flex-direction: row;
+      span {
+        font-family: $normal;
+      }
+    }
+    .code {
+      font-size: 10px;
+      color: #707070;
     }
   }
 }

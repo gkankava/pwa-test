@@ -1,8 +1,9 @@
 import React from "react";
+import { Keyword } from "ui/components";
 import { hasHomeBar } from "utils/device";
 
 function Content({ data, contentVisible }) {
-  const { availability, keywords } = data;
+  const { keywords } = data;
   return (
     <div
       className="content"
@@ -11,7 +12,14 @@ function Content({ data, contentVisible }) {
         paddingBottom: hasHomeBar() ? "70px" : "50px",
       }}
     >
-      <div></div>
+      <h3>{data.title}</h3>
+      <div className="content-container">
+        {data.description}
+        <div className="keywords-container">
+          {keywords &&
+            keywords.map((i, k) => <Keyword key={k} label={i.name} />)}
+        </div>
+      </div>
     </div>
   );
 }

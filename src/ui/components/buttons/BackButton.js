@@ -5,10 +5,14 @@ import { useNavigate } from "react-router-dom";
 import backBtnDark from "assets/icons/back_black.png";
 import backBtnLight from "assets/icons/back.png";
 
-function BackButton({ styleType = "dark" }) {
+function BackButton({ styleType = "dark", action = false }) {
   let navigate = useNavigate();
   const goBack = () => {
-    navigate(-1);
+    if (action) {
+      action();
+    } else {
+      navigate(-1);
+    }
   };
   return (
     <Touchable className="btn-back" action={goBack}>
