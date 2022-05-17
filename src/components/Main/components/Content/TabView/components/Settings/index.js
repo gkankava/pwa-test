@@ -1,11 +1,19 @@
 import React from "react";
 
-function index() {
+import Container from "./components/categories/Container";
+import CategoriesSkeleton from "./components/categories/CategoriesSkeleton";
+
+import SMIcon from "sm-icon";
+
+function Settings({ index }) {
   return (
-    <div>
-      <div></div>
-    </div>
+    <Container>
+      <SMIcon name="heart" />
+      <CategoriesSkeleton />
+      <CategoriesSkeleton />
+      <CategoriesSkeleton />
+    </Container>
   );
 }
 
-export default index;
+export default Settings;

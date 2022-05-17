@@ -6,6 +6,7 @@ import StickyHeader from "../../StickyHeader";
 
 import Data from "./components/Data";
 import Search from "./components/Search";
+import Settings from "./components/Settings";
 import SettingsSharedTab from "./components/Settings/SettingsSharedTab";
 import { palette } from "ui";
 
@@ -42,10 +43,7 @@ function TabView({ activeContent }) {
               />
             ))
           : arr.map((i) => (
-              <div
-                key={i.toString() + "settings"}
-                style={{ height: "600px", background: palette.blue }}
-              ></div>
+              <Settings key={i.toString() + "settings"} index={i} />
             ))}
       </SwipeableViews>
     </>
