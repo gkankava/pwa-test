@@ -8,7 +8,6 @@ import Data from "./components/Data";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
 import SettingsSharedTab from "./components/Settings/SettingsSharedTab";
-import { palette } from "ui";
 
 function TabView({ activeContent }) {
   const [activeTab, setActiveTab] = useState(0);

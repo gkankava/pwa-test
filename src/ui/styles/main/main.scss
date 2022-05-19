@@ -194,4 +194,22 @@
   background-color: $blue;
   height: 100%;
   padding: $m;
+  .category-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .icon-container {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      border: 1px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    span {
+      font-family: $normal;
+      margin-left: 20px;
+    }
+  }
 }

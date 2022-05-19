@@ -20,7 +20,6 @@
     "react-scripts": "^5.0.1",
     "react-swipeable-views": "^0.14.0",
     "sass": "^1.49.10",
-    "sm-icon": "github:gkankava/sm-icons",
     "swiper": "^8.1.4",
     "use-immer": "^0.6.0",
     "web-vitals": "^0.2.4",

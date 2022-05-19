@@ -20,6 +20,7 @@ import {
   likeEventSlice,
   likeNewsSlice,
   couponsSlice,
+  categoriesSlice,
 } from "./api";
 
 export const useStore = create((set, get) => ({
@@ -50,4 +51,6 @@ export const useStore = create((set, get) => ({
   ...likeNewsSlice(set, get),
   //coupons
   ...couponsSlice(set, get),
+  //categories
+  ...categoriesSlice(set, get),
 }));
