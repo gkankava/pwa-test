@@ -29,9 +29,8 @@ function Events() {
       );
       setFilteredData(newArr);
     }
+    // eslint-disable-next-line
   }, [categories]);
-
-  console.log(filteredData, categoriesList);
 
   if (!data.data) return null;
 
