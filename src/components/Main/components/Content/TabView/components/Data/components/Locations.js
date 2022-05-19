@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "store";
 
@@ -15,16 +15,35 @@ function Locations() {
   );
   const fetchLocationsNext = useStore((state) => state.fetchLocationsNext);
 
+  const categoriesList = useStore(
+    (state) => state.categories.locations.data.data
+  );
+  const categories = useStore((state) => state.filters.locations.categories);
+
+  const [filteredData, setFilteredData] = useState(data.data);
+  useEffect(() => {
+    if (categories.length > 0) {
+      let newArr = filteredData.filter((i) =>
+        categories.includes(i.category_id)
+      );
+      setFilteredData(newArr);
+    }
+  }, [categories]);
+
   if (!data.data) return null;
 
   return (
     <>
       {look === "list" ? (
-        <ListView data={data.data} action={action} />
+        <ListView
+          data={filteredData}
+          action={action}
+          categoriesList={categoriesList}
+        />
       ) : look === "grid" ? (
-        <GridView data={data.data} action={action} />
+        <GridView data={filteredData} action={action} />
       ) : (
-        <CoverView data={data.data} action={action} />
+        <CoverView data={filteredData} action={action} />
       )}
       <IOTrigger
         canFetchNext={canFetchNext}

@@ -7,8 +7,9 @@ import { calcTimeDiff } from "utils/calcTimeDiff";
 import { Touchable } from "..";
 import Badge from "./Badge";
 import frontIco from "assets/icons/front.png";
+import SMIcon from "ui/sm-icons";
 
-function DataListItem({ item, action }) {
+function DataListItem({ item, action, icon }) {
   return (
     <Touchable
       className="data-list-item"
@@ -29,7 +30,7 @@ function DataListItem({ item, action }) {
         <span className="sub-title">{item.description}</span>
       </div>
       <div className="right-container">
-        <img src={frontIco} alt="action-icon" />
+        <SMIcon name={icon ? "icon1" : "icon2"} size={30} />
         {item.distance && (
           <span className="info">{formatDistance(item.distance)}</span>
         )}

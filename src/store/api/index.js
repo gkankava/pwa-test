@@ -14,6 +14,8 @@ import { likeNewsSlice } from "./likeNews";
 
 import { couponsSlice } from "./coupons";
 
+import { categoriesSlice } from "./categories";
+
 export {
   locationsSlice,
   eventsSlice,
@@ -26,4 +28,5 @@ export {
   likeEventSlice,
   likeNewsSlice,
   couponsSlice,
+  categoriesSlice,
 };

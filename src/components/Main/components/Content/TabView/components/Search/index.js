@@ -15,6 +15,7 @@ function Search({ id, activeTab }) {
   const onClose = () => {
     setCurrentScene("tabView");
   };
+
   return (
     <SceneContainer onClose={onClose}>
       <div style={{ marginTop: 20 }}>
