@@ -8,6 +8,7 @@ import { TextInput } from "./inputs";
 import IOTrigger from "./IOTrigger";
 import {
   CheckListItem,
+  BSListItem,
   DataListItem,
   DataGridItem,
   DataCoverItem,
@@ -31,6 +32,7 @@ export {
   ListView,
   GridView,
   CoverView,
+  BSListItem,
   DataListItem,
   DataGridItem,
   DataCoverItem,

@@ -14,7 +14,7 @@ function News() {
   useEffect(() => {
     fetchNewsItem(id, currentLocation);
     // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   const setPrivateModalVisible = useStore(
     (state) => state.setPrivateModalVisible

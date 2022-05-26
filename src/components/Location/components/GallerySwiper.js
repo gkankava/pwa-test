@@ -7,7 +7,7 @@ import { getOriginal, getVideo } from "utils/imgUri";
 
 function GallerySwiper({ data: { data } }) {
   return (
-    <>
+    <div className="head-swiper-container">
       <Swiper
         pagination={{
           clickable: true,
@@ -18,7 +18,7 @@ function GallerySwiper({ data: { data } }) {
         {data.map((i, k) => (
           <SwiperSlide key={k}>
             {i.image ? (
-              <img src={getOriginal(i.image)} alt="gallery-image" />
+              <img src={getOriginal(i.image)} alt="gallery-slide" />
             ) : (
               <video
                 autoPlay
@@ -33,7 +33,7 @@ function GallerySwiper({ data: { data } }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 }
 

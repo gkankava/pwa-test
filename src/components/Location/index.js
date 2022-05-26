@@ -9,6 +9,8 @@ import GallerySwiper from "./components/GallerySwiper";
 import StickyHeader from "./components/StickyHeader";
 import Content from "./components/Content";
 
+import { BSMap, BSKeyword } from "components/BSComps";
+
 function Location() {
   const { id } = useParams();
 
@@ -28,12 +30,11 @@ function Location() {
     fetchLocation(id);
     window.addEventListener("scroll", handleScroll);
     return () => {
+      setBs(false);
       window.removeEventListener("scroll", handleScroll);
     };
     // eslint-disable-next-line
-  }, []);
-
-  const [bs, setBs] = useState(false);
+  }, [id]);
 
   const { isAuthenticated } = useStore((state) => state.currentUser);
 
@@ -61,13 +62,37 @@ function Location() {
     }
   };
 
+  const [bs, setBs] = useState(false);
+
+  const toogleBs = (active, id, title) => {
+    if (!bs) {
+      setBs({ active, id, title });
+    } else if (bs.id !== id) {
+      setBs(false);
+      setTimeout(() => {
+        setBs({ active, id, title });
+      }, 300);
+    }
+  };
+
+  const BSContent = () => {
+    switch (bs.id) {
+      case "map":
+        return <BSMap locations={[location]} />;
+      case "key":
+        return <BSKeyword refer="location" />;
+      default:
+        return null;
+    }
+  };
+
   if (fetching || !fetched) return <AppLoading size="fs" />;
 
   return (
     <Container>
       <StaticHeader
         data={location}
-        setBs={setBs}
+        toogleBs={toogleBs}
         subscribed={location.user_subscribed_location}
         subscribe={subscribe}
         unSubscribe={unSubscribe}
@@ -76,13 +101,15 @@ function Location() {
       <StickyHeader data={location} offsetY={offsetY} />
       <Content
         data={location}
-        setBs={setBs}
+        toogleBs={toogleBs}
         subscribed={location.user_subscribed_location}
         subscribe={subscribe}
         unSubscribe={unSubscribe}
       />
       {bs && (
-        <BSModal state={bs} setState={setBs} headerTitle="Navigate"></BSModal>
+        <BSModal state={bs.active} setState={setBs} headerTitle={bs.title}>
+          <BSContent />
+        </BSModal>
       )}
     </Container>
   );

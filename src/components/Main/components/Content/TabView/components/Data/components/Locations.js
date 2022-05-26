@@ -15,9 +15,6 @@ function Locations() {
   );
   const fetchLocationsNext = useStore((state) => state.fetchLocationsNext);
 
-  const categoriesList = useStore(
-    (state) => state.categories.locations.data.data
-  );
   const categories = useStore((state) => state.filters.locations.categories);
 
   const [filteredData, setFilteredData] = useState(data.data);
@@ -28,6 +25,7 @@ function Locations() {
       );
       setFilteredData(newArr);
     }
+    // eslint-disable-next-line
   }, [categories]);
 
   if (!data.data) return null;
@@ -35,11 +33,7 @@ function Locations() {
   return (
     <>
       {look === "list" ? (
-        <ListView
-          data={filteredData}
-          action={action}
-          categoriesList={categoriesList}
-        />
+        <ListView data={filteredData} action={action} />
       ) : look === "grid" ? (
         <GridView data={filteredData} action={action} />
       ) : (

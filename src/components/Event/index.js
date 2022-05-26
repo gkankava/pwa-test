@@ -15,7 +15,7 @@ function Event() {
   useEffect(() => {
     fetchEvent(id, currentLocation);
     // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   const setPrivateModalVisible = useStore(
     (state) => state.setPrivateModalVisible
@@ -42,7 +42,7 @@ function Event() {
   return (
     <SharedPage
       data={event}
-      refer={"events"}
+      refer={"event"}
       liked={event.user_favorite_events}
       toogleLike={toogleLike}
     />
