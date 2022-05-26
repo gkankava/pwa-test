@@ -7,15 +7,45 @@ import BottomBar from "./components/BottomBar";
 
 import { webShare } from "services";
 import { BSModal } from "ui/components";
-import BsCoupons from "./components/BsCoupons";
 import CouponModalFS from "./components/CouponModal";
 
+import { BSMap, BSKeyword, BSList } from "components/BSComps";
+import BsCoupons from "./components/BsCoupons";
+
 function SharedPage({ data, refer, liked, toogleLike }) {
-  const { title, description, id, coupon_count, gallery } = data;
+  const { title, description, id, coupon_count, gallery, available_locations } =
+    data;
 
   const [contentVisible, setContentVisible] = useState(true);
+
   const [bs, setBs] = useState(false);
-  const [bsC, setBsC] = useState(false);
+  const toogleBs = (active, id, title, actionType = "") => {
+    if (!bs) {
+      setBs({ active, id, title, actionType });
+    } else if (bs.id !== id) {
+      setBs(false);
+      setTimeout(() => {
+        setBs({ active, id, title, actionType });
+      }, 300);
+    } else if (bs.id === id && bs.title !== title) {
+      setBs({ active, id, title, actionType });
+    }
+  };
+
+  const BSContent = () => {
+    switch (bs.id) {
+      case "map":
+        return <BSMap locations={available_locations} />;
+      case "key":
+        return <BSKeyword refer={refer} />;
+      case "list":
+        return <BSList data={available_locations} actionType={bs.actionType} />;
+      case "coupons":
+        return <BsCoupons id={id} openModal={openCouponModal} />;
+      default:
+        return null;
+    }
+  };
 
   const toogleContent = () => {
     setContentVisible((prev) => !prev);
@@ -25,13 +55,6 @@ function SharedPage({ data, refer, liked, toogleLike }) {
     webShare(title, description, id)
       .then((res) => console.log(res))
       .catch((err) => err);
-  };
-
-  const openMapModal = () => {
-    setBs(true);
-  };
-  const openCouponsModal = () => {
-    setBsC(true);
   };
 
   const [couponModal, setCouponModal] = useState({
@@ -52,26 +75,32 @@ function SharedPage({ data, refer, liked, toogleLike }) {
       {couponModal.active && (
         <CouponModalFS data={couponModal.data} closeModal={closeCouponModal} />
       )}
-      <Header data={data} />
+      <Header data={data} toogleBs={toogleBs} />
       <GallerySwiper data={gallery} />
-      <Content data={data} contentVisible={contentVisible} />
+      <Content
+        data={data}
+        contentVisible={contentVisible}
+        toogleBs={toogleBs}
+        refer={refer}
+      />
       <BottomBar
         onShare={onShare}
-        openMapModal={openMapModal}
-        openBsC={openCouponsModal}
+        toogleBs={toogleBs}
         toogle={toogleContent}
         coupon_count={coupon_count}
         liked={liked}
         toogleLike={toogleLike}
       />
       {bs && (
-        <BSModal state={bs} setState={setBs} headerTitle="Navigate"></BSModal>
+        <BSModal state={bs.active} setState={setBs} headerTitle={bs.title}>
+          <BSContent />
+        </BSModal>
       )}
-      {bsC && (
+      {/* {bsC && (
         <BSModal state={bs} setState={setBsC} headerTitle="Coupons">
           <BsCoupons id={id} openModal={openCouponModal} />
         </BSModal>
-      )}
+      )} */}
     </div>
   );
 }

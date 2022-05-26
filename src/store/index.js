@@ -21,6 +21,7 @@ import {
   likeNewsSlice,
   couponsSlice,
   categoriesSlice,
+  byKewordsSlise,
 } from "./api";
 
 export const useStore = create((set, get) => ({
@@ -53,4 +54,6 @@ export const useStore = create((set, get) => ({
   ...couponsSlice(set, get),
   //categories
   ...categoriesSlice(set, get),
+  //dataByKewords
+  ...byKewordsSlise(set, get),
 }));

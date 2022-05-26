@@ -13,10 +13,9 @@ import { theme } from "ui";
 
 function BottomBar({
   onShare,
-  openMapModal,
+  toogleBs,
   toogle,
   coupon_count,
-  openBsC,
   liked,
   toogleLike,
 }) {
@@ -33,13 +32,21 @@ function BottomBar({
         <img src={listIco} alt="toogle-ico-2" />
       </Touchable>
       <div className="right-container">
-        <Touchable action={openMapModal}>
+        <Touchable
+          action={() => {
+            toogleBs(true, "map", "navigate");
+          }}
+        >
           <img src={location} alt="location-ico" />
         </Touchable>
         <div className="divider" />
         {coupon_count && coupon_count > 0 ? (
           <>
-            <Touchable action={openBsC}>
+            <Touchable
+              action={() => {
+                toogleBs(true, "coupons", "coupons");
+              }}
+            >
               <img src={couponIcon} alt="coupon-ico" />
             </Touchable>
             <div className="divider" />

@@ -17,7 +17,7 @@ function CategoryItem({ item, active, toogle }) {
         style={{ borderColor: active ? palette.green : "white" }}
       >
         <SMIcon
-          name={item.icon || "icon1"}
+          name={item.icon}
           size={25}
           color={active ? palette.green : "white"}
         />

@@ -15,6 +15,7 @@ import { likeNewsSlice } from "./likeNews";
 import { couponsSlice } from "./coupons";
 
 import { categoriesSlice } from "./categories";
+import { byKewordsSlise } from "./dataByKeywords";
 
 export {
   locationsSlice,
@@ -29,4 +30,5 @@ export {
   likeNewsSlice,
   couponsSlice,
   categoriesSlice,
+  byKewordsSlise,
 };

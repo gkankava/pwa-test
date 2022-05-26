@@ -1,13 +1,21 @@
 import React from "react";
-import { DataListItem } from "..";
+import { DataListItem, BSListItem } from "..";
 
-function ListView({ data, action, categoriesList }) {
-  const getIconName = (id) => {
-    if (categoriesList) {
-      let n = categoriesList.filter((i) => i.id === id);
-      return n[0]?.name;
-    }
-  };
+function ListView({ data, action, bs }) {
+  if (bs) {
+    return (
+      <>
+        {data.map((i, k) => (
+          <BSListItem
+            key={k}
+            item={i}
+            action={action}
+            icon={i.category?.icon}
+          />
+        ))}
+      </>
+    );
+  }
   return (
     <div>
       {data.map((i, k) => (
@@ -15,7 +23,7 @@ function ListView({ data, action, categoriesList }) {
           key={k}
           item={i}
           action={action}
-          icon={getIconName(i.category_id)}
+          icon={i.category?.icon}
         />
       ))}
     </div>
