@@ -5,6 +5,7 @@ import { Touchable } from "ui/components";
 import SMIcon from "ui/sm-icons";
 
 function CategoryItem({ item, active, toogle }) {
+  console.log(item);
   return (
     <Touchable
       action={() => {
@@ -24,6 +25,15 @@ function CategoryItem({ item, active, toogle }) {
       </div>
       <span style={{ color: active ? palette.green : "white" }}>
         {item.name}
+      </span>
+      <span
+        style={{
+          color: active ? palette.green : "white",
+          marginLeft: "auto",
+          fontSize: 16,
+        }}
+      >
+        {item.locations_count}
       </span>
     </Touchable>
   );
