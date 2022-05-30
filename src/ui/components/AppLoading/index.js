@@ -1,6 +1,7 @@
 import React from "react";
 
-export default ({ size }) => (
+// eslint-disable-next-line
+export default ({ size = "fs" }) => (
   <svg
     width={size === "fs" ? "100%" : size}
     height={size === "fs" ? window.innerHeight : size}

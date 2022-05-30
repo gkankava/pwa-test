@@ -7,7 +7,7 @@ import { getOriginal, getVideo } from "utils/imgUri";
 
 function GallerySwiper({ data: { data } }) {
   return (
-    <>
+    <div className="shared-page-gallery-swiper">
       <Swiper
         pagination={{
           clickable: true,
@@ -33,7 +33,7 @@ function GallerySwiper({ data: { data } }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 }
 

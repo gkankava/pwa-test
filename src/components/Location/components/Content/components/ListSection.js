@@ -10,13 +10,13 @@ import mail from "assets/icons/locationList/mail.png";
 import web from "assets/icons/locationList/web.png";
 import { useNavigate } from "react-router-dom";
 
-function ListSection({ data, setBs, subscribe, subscribed, unSubscribe }) {
+function ListSection({ data, toogleBs, subscribe, subscribed, unSubscribe }) {
   let navigate = useNavigate();
   const goToOffers = () => {
     navigate(`/offers/${data.id}`);
   };
   const openMapBS = () => {
-    setBs(true);
+    toogleBs(true, "map", "Navigate");
   };
 
   const call = () => {
@@ -28,9 +28,9 @@ function ListSection({ data, setBs, subscribe, subscribed, unSubscribe }) {
   };
 
   const openWebBrowser = () => {
-    //  window.location.href = data.web_page;
     window.open(data.web_page, "_blank");
   };
+
   return (
     <div className="list-section">
       <ListItem icon={star} label="Offers" action={goToOffers} />

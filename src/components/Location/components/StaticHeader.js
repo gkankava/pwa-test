@@ -8,9 +8,9 @@ import mail from "assets/icons/mail.png";
 import web from "assets/icons/web.png";
 import location from "assets/filters/location.png";
 
-function StaticHeader({ setBs, data, subscribe, unSubscribe, subscribed }) {
+function StaticHeader({ toogleBs, data, subscribe, unSubscribe, subscribed }) {
   const openMapBS = () => {
-    setBs(true);
+    toogleBs(true, "map", "Navigate");
   };
 
   const call = () => {

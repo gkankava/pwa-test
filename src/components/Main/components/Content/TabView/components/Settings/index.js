@@ -1,11 +1,37 @@
 import React from "react";
+import { useStore } from "store";
 
-function index() {
+import Container from "./components/categories/Container";
+import CategoriesSkeleton from "./components/categories/CategoriesSkeleton";
+
+import LocationCategories from "./components/data/LocationCategories";
+import EventsCategories from "./components/data/EventsCategories";
+import NewsCategories from "./components/data/NewsCategories";
+
+function Settings({ index }) {
+  const { fetching } = useStore((state) => state.categories);
+
+  if (fetching) {
+    return (
+      <Container>
+        <CategoriesSkeleton />
+        <CategoriesSkeleton />
+        <CategoriesSkeleton />
+      </Container>
+    );
+  }
+
   return (
-    <div>
-      <div></div>
-    </div>
+    <Container>
+      {index === 0 ? (
+        <LocationCategories />
+      ) : index === 1 ? (
+        <EventsCategories />
+      ) : (
+        <NewsCategories />
+      )}
+    </Container>
   );
 }
 
-export default index;
+export default Settings;

@@ -14,8 +14,8 @@ function Filters() {
         enableMouseEvents
         // animateHeight
       >
-        {filters.map((i) => (
-          <Slide key={i.index.toString()} data={i.filters} />
+        {filters.map((i, k) => (
+          <Slide key={k} data={i.filters} />
         ))}
       </SwipeableViews>
       <Paginator data={filters} index={index} />

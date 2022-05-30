@@ -23,4 +23,23 @@ export const filtersSlice = (set, get) => ({
       })
     );
   },
+  toogleCategory: (refer, id) => {
+    let arr = get().filters[refer].categories;
+    let exists = arr.includes(id);
+    if (exists) {
+      set(
+        produce((state) => {
+          state.filters[refer].categories = state.filters[
+            refer
+          ].categories.filter((i) => i !== id);
+        })
+      );
+    } else {
+      set(
+        produce((state) => {
+          state.filters[refer].categories.push(id);
+        })
+      );
+    }
+  },
 });

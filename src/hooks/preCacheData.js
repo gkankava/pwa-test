@@ -10,7 +10,7 @@ export const PreCacheData = () => {
   const resetLocationsFetched = useStore(
     (state) => state.resetLocationsFetched
   );
-
+  const fetchCategories = useStore((state) => state.fetchCategories);
   const { fetched: locationsFetched } = useStore((state) => state.locations);
   const fetchEvents = useStore((state) => state.fetchEvents);
   const resetEventsFetched = useStore((state) => state.resetEventsFetched);
@@ -25,19 +25,22 @@ export const PreCacheData = () => {
   const [isReady, setIsready] = useState(false);
 
   useEffect(() => {
-    if (true) {
-      const params = {
-        longitude: userLocation?.longitude || 8.514803,
-        latitude: userLocation?.latitude || 48.5275439,
-        radius: filters?.radius || 5,
-        orderBy: filters?.orderBy || "updated_at",
-      };
-      fetchLocations(params);
-      fetchEvents(params);
-      fetchNews(params);
-    }
+    const params = {
+      longitude: userLocation?.longitude || 8.514803,
+      latitude: userLocation?.latitude || 48.5275439,
+      radius: filters?.radius || 5,
+      orderBy: filters?.orderBy || "updated_at",
+    };
+    fetchLocations(params);
+    fetchEvents(params);
+    fetchNews(params);
+    fetchCategories({
+      longitude: userLocation?.longitude || 8.514803,
+      latitude: userLocation?.latitude || 48.5275439,
+      radius: filters?.radius || 5,
+    });
     // eslint-disable-next-line
-  }, [filters]);
+  }, [filters.radius]);
 
   useEffect(() => {
     if (locationsFetched && eventsFetched && newsFetched) {
