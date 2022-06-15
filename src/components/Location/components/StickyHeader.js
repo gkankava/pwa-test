@@ -1,12 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { getOriginal } from "utils/imgUri";
 
 function StickyHeader({ data, offsetY }) {
-  const { logo, title, sub_title } = data;
-
+  const { id, logo, title, sub_title, pinnedGalleries } = data;
+  const navigate = useNavigate();
   return (
     <div className="sticky-header">
-      <img src={getOriginal(logo)} alt="location-logo" />
+      <div
+        onClick={() => navigate(`/story/${id}`, { state: { pinnedGalleries } })}
+        className={pinnedGalleries.length ? "rainbow" : "ml-rainbow"}
+      >
+        <img src={getOriginal(logo)} alt="location-logo" />
+      </div>
       <div className="text-container">
         <div className="title">{title}</div>
         <div className="sub-title">{sub_title}</div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { BackButton, CloseButton } from "ui/components";
+import { BackButton } from "ui/components";
 
 function Header({ closeModal, title }) {
   return (

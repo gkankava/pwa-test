@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "store";
 
@@ -11,23 +11,15 @@ function News() {
   };
 
   const look = useStore((state) => state.look);
-  const { data, canFetchNext, fetchingNext } = useStore((state) => state.news);
+  const { data, canFetchNext, fetchingNext } = useStore(
+    (state) => state.favouriteNews
+  );
   const fetchNewsNext = useStore((state) => state.fetchNewsNext);
 
   const categoriesList = useStore((state) => state.categories.news.data.data);
-  const categories = useStore((state) => state.filters.news.categories);
 
-  const [filteredData, setFilteredData] = useState(data.data);
+  const [filteredData] = useState(data.data);
 
-  useEffect(() => {
-    if (categories.length > 0) {
-      let newArr = filteredData.filter((i) =>
-        categories.includes(i.category_id)
-      );
-      setFilteredData(newArr);
-    }
-    // eslint-disable-next-line
-  }, [categories]);
   if (!data.data) return null;
 
   return (

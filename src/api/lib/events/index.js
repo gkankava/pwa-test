@@ -13,3 +13,7 @@ export function getNextEvents(url) {
 export function getEvent(id, coords) {
   return apiCall.get(`/mobile/events/${id}`, { params: coords });
 }
+
+export function getFavouriteEvents() {
+  return apiCall.get(`/mobile/favorite/events`);
+}

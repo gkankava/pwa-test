@@ -1,34 +1,39 @@
 import React from "react";
-
-import starIco from "assets/icons/star2.png";
-import heartIco from "assets/icons/heart.png";
-import anouIco from "assets/icons/profile/anou.png";
-import { Touchable } from "ui/components";
+import { palette, theme } from "ui";
 
 function TabBar({ activeTab, setActiveTab }) {
   return (
     <div className="tab-bar">
-      <Touchable className="tab-bar-item" action={() => setActiveTab(0)}>
-        <img
-          src={starIco}
-          alt="nav-ico"
-          style={{ opacity: activeTab === 0 ? 1 : 0.8 }}
-        />
-      </Touchable>
-      <Touchable className="tab-bar-item" action={() => setActiveTab(1)}>
-        <img
-          src={heartIco}
-          alt="nav-ico"
-          style={{ opacity: activeTab === 1 ? 1 : 0.8 }}
-        />
-      </Touchable>
-      <Touchable className="tab-bar-item" action={() => setActiveTab(2)}>
-        <img
-          src={anouIco}
-          alt="nav-ico"
-          style={{ opacity: activeTab === 2 ? 1 : 0.8 }}
-        />
-      </Touchable>
+      <div
+        className="tab-bar-item"
+        onClick={() => setActiveTab(0)}
+        style={{
+          ...theme.textVariants.nav,
+          color: activeTab === 0 ? "white" : palette.whiteDis,
+        }}
+      >
+        Locations
+      </div>
+      <div
+        className="tab-bar-item"
+        onClick={() => setActiveTab(1)}
+        style={{
+          ...theme.textVariants.nav,
+          color: activeTab === 1 ? "white" : palette.whiteDis,
+        }}
+      >
+        Events
+      </div>
+      <div
+        className="tab-bar-item"
+        onClick={() => setActiveTab(2)}
+        style={{
+          ...theme.textVariants.nav,
+          color: activeTab === 2 ? "white" : palette.whiteDis,
+        }}
+      >
+        News
+      </div>
     </div>
   );
 }

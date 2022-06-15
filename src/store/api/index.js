@@ -1,4 +1,5 @@
 import { locationsSlice } from "./locations";
+
 import { eventsSlice } from "./events";
 import { newsSlice } from "./news";
 
@@ -17,6 +18,12 @@ import { couponsSlice } from "./coupons";
 import { categoriesSlice } from "./categories";
 import { byKewordsSlise } from "./dataByKeywords";
 
+import { favouriteLocationsSlice } from "./favouriteLocations";
+import { favouriteEventsSlice } from "./favouriteEvents";
+import { favouriteNewsSlice } from "./favouriteNews";
+
+import { gallerySlice } from "./gallery";
+
 export {
   locationsSlice,
   eventsSlice,
@@ -31,4 +38,8 @@ export {
   couponsSlice,
   categoriesSlice,
   byKewordsSlise,
+  favouriteLocationsSlice,
+  favouriteEventsSlice,
+  favouriteNewsSlice,
+  gallerySlice,
 };
