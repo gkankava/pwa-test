@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
+import FavouriteData from "../TabView/components/FavouriteData";
 import StickyHeader from "./components/StickyHeader";
 
 function Profile({ setMainContent }) {
@@ -17,18 +18,14 @@ function Profile({ setMainContent }) {
         enableMouseEvents
         onChangeIndex={(i) => setActiveTab(i)}
       >
-        <div style={{ height: "600px", background: "white" }}>
-          slide n°{activeTab}
-        </div>
-        <div style={{ height: "800px", background: "white" }}>
-          slide n°{activeTab}
-        </div>
-        <div style={{ height: "1200px", background: "white" }}>
-          slide n°{activeTab}
-        </div>
+        {arr.map((i) => (
+          <FavouriteData key={i.toString()} index={i} />
+        ))}
       </SwipeableViews>
     </>
   );
 }
 
 export default Profile;
+
+const arr = [0, 1, 2];

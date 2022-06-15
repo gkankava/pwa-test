@@ -15,6 +15,9 @@ function DataListItem({ item, action, icon }) {
       action={() => {
         action(item.id);
       }}
+      style={{
+        position: "relative",
+      }}
     >
       <div className="logo-container">
         {item.coupon_count > 0 && <Badge text={item.coupon_count} />}
@@ -24,7 +27,27 @@ function DataListItem({ item, action, icon }) {
           className="logo"
         />
       </div>
+
       <div className="text-container">
+        <p
+          style={{
+            fontSize: "0.5em",
+            position: "absolute",
+            right: "0",
+            top: "1em",
+            margin: "0",
+            color:
+              item.business_opening_hours && item.business_opening_hours.is_open
+                ? "green"
+                : "red",
+          }}
+        >
+          {item.business_opening_hours &&
+            (item.business_opening_hours.is_open
+              ? `Closes in ${item.business_opening_hours.time_before_close}`
+              : `Opens in ${item.business_opening_hours.time_before_open}`)}
+        </p>
+
         <span className="title">{item.title}</span>
         <span className="sub-title">{item.description}</span>
       </div>

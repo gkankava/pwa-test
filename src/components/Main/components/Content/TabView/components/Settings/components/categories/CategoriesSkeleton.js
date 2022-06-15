@@ -1,5 +1,5 @@
 import React from "react";
-import ContentLoader, { Code } from "react-content-loader";
+import ContentLoader from "react-content-loader";
 
 function CategoriesSkeleton(props) {
   return (

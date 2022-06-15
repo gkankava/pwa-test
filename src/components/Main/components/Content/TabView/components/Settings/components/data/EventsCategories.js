@@ -6,8 +6,6 @@ import CategoryItem from "../categories/CategoryItem";
 function EventsCategories() {
   const {
     data: { data },
-    canFetchNext,
-    fetchingNext,
   } = useStore((state) => state.categories.events);
 
   const list = useStore((state) => state.filters.events.categories);
