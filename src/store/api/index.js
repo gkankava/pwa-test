@@ -24,6 +24,8 @@ import { favouriteNewsSlice } from "./favouriteNews";
 
 import { gallerySlice } from "./gallery";
 
+import { FCMSlice } from "./token";
+
 export {
   locationsSlice,
   eventsSlice,
@@ -42,4 +44,5 @@ export {
   favouriteEventsSlice,
   favouriteNewsSlice,
   gallerySlice,
+  FCMSlice,
 };
