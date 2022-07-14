@@ -3,6 +3,8 @@ import { useLoadScript } from "@react-google-maps/api";
 import Router from "Router";
 import { requestForToken } from "./firebase";
 import { useStore } from "store";
+import { apiCall } from "api";
+
 function App() {
   const storeToken = useStore((state) => state.storeToken);
   const { isAuthenticated } = useStore((state) => state.currentUser);
@@ -11,9 +13,15 @@ function App() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
-  requestForToken(setPushToken);
   useEffect(() => {
-    isAuthenticated &&
+    requestForToken(setPushToken);
+  }, []);
+  useEffect(() => {
+    if (
+      isAuthenticated &&
+      pushToken &&
+      apiCall.defaults.headers.common["Authorization"]
+    )
       storeToken({
         device_key: pushToken,
         device_agent: window.navigator.userAgent,

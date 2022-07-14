@@ -24,7 +24,6 @@ const messaging = getMessaging();
 export const requestForToken = (setPushToken) => {
   return getToken(messaging)
     .then((currentToken) => {
-      console.log(currentToken);
       if (currentToken) {
         setPushToken(currentToken);
         // Perform any other neccessary action with the token
