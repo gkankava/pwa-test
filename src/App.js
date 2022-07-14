@@ -14,7 +14,7 @@ function App() {
   });
 
   useEffect(() => {
-    requestForToken(setPushToken);
+    if (isAuthenticated) requestForToken(setPushToken);
   }, []);
   useEffect(() => {
     if (
