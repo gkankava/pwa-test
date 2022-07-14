@@ -26,6 +26,7 @@ import {
   favouriteLocationsSlice,
   favouriteNewsSlice,
   gallerySlice,
+  FCMSlice,
 } from "./api";
 import { devtools } from "zustand/middleware";
 
@@ -68,5 +69,7 @@ export const useStore = create(
     ...favouriteNewsSlice(set, get),
     //pinnedGallery
     ...gallerySlice(set, get),
+    //FCM Token
+    ...FCMSlice(set, get),
   }))
 );
