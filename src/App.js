@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated) requestForToken(setPushToken);
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (
