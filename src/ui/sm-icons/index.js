@@ -63,7 +63,7 @@ const SMIcon = (props) => {
     <StyledSVGIcon
       src={
         props.name
-          ? require(`./icons/${props.name}.svg`)
+          ? require(`./icons/${props.name.replace(" ", "_")}.svg`)
           : require(`./icons/default.svg`)
       }
       color={props.color}
