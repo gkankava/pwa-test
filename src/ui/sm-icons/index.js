@@ -47,7 +47,7 @@ const SMIcon = (props) => {
         className="sm-icons-cat"
         src={
           props.name
-            ? require(`./icons/png/${props.name}.png`)
+            ? require(`./icons/png/${props.name.replace(" ", "_")}.png`)
             : require(`./icons/png/default.png`)
         }
         alt="category-icon"
