@@ -11,6 +11,7 @@ function ProfileHeader({ setMainContent, type = "dropdown" }) {
 
   const logOut = () => {
     logOutUser();
+
     setMainContent("tabs");
   };
 

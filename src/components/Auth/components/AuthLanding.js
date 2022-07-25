@@ -3,6 +3,7 @@ import React from "react";
 import logo from "assets/logo/logo-dark.png";
 import { Button } from "ui/components";
 import { useNavigate } from "react-router-dom";
+import { getFacebookToken, getGoogleToken } from "api/lib/social";
 
 function AuthLanding() {
   let navigate = useNavigate();
@@ -16,6 +17,18 @@ function AuthLanding() {
   };
   const goRegister = () => {
     navigate("register");
+  };
+
+  const navigateFacebook = () => {
+    getFacebookToken().then((response) => {
+      window.location.replace(response.data.redirect_url);
+    });
+  };
+
+  const navigateGoogle = () => {
+    getGoogleToken().then((response) => {
+      window.location.replace(response.data.redirect_url);
+    });
   };
 
   return (
@@ -35,11 +48,13 @@ function AuthLanding() {
           <hr />
         </div>
         <Button
+          onClick={navigateFacebook}
           type="secondary"
           label="Facebook"
           style={{ marginTop: "10px" }}
         />
         <Button
+          onClick={navigateGoogle}
           type="secondary"
           label="Google+"
           style={{ marginTop: "10px" }}

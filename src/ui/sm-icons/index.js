@@ -45,11 +45,7 @@ const SMIcon = (props) => {
     return (
       <img
         className="sm-icons-cat"
-        src={
-          props.name
-            ? require(`./icons/png/${props.name}.png`)
-            : require(`./icons/png/default.png`)
-        }
+        src={require(`./icons/png/default.png`)}
         alt="category-icon"
         style={{
           height: props.size,
@@ -61,11 +57,7 @@ const SMIcon = (props) => {
   }
   return (
     <StyledSVGIcon
-      src={
-        props.name
-          ? require(`./icons/${props.name}.svg`)
-          : require(`./icons/default.svg`)
-      }
+      src={require(`./icons/default.svg`)}
       color={props.color}
       size={props.size}
       transform={props.transform}
