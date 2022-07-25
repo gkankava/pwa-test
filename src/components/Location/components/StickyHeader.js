@@ -8,7 +8,11 @@ function StickyHeader({ data, offsetY }) {
   return (
     <div className="sticky-header">
       <div
-        onClick={() => navigate(`/story/${id}`, { state: { pinnedGalleries } })}
+        onClick={() =>
+          pinnedGalleries.length
+            ? navigate(`/story/${id}`, { state: { pinnedGalleries } })
+            : null
+        }
         className={pinnedGalleries.length ? "rainbow" : "ml-rainbow"}
       >
         <img src={getOriginal(logo)} alt="location-logo" />

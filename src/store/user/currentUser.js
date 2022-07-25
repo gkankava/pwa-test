@@ -17,7 +17,15 @@ const initialState = {
 export const currentUserSlice = (set, get) => ({
   currentUser: initialState,
   setCurrentUser: (currentUser) => {
-    set(() => ({ currentUser }));
+    console.log(currentUser);
+    set(() => ({
+      currentUser: {
+        ...currentUser,
+        fetched: false,
+        fetching: true,
+        isAuthenticated: true,
+      },
+    }));
   },
   loginUser: async (data) => {
     set((state) => ({
@@ -57,7 +65,7 @@ export const currentUserSlice = (set, get) => ({
       localStorage.removeItem("jwtToken");
       setTokenHeader();
       set((state) => ({
-        currentUser: initialState,
+        currentUser: { ...initialState, isAuthenticated: false },
       }));
     });
   },

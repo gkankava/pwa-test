@@ -13,12 +13,15 @@ import Register from "components/Auth/components/Register";
 import { PrivateModal } from "ui/components";
 import EditProfile from "components/EditProfile";
 import Story from "components/Story";
+import SocialFacebook from "components/Social/facebook";
+import SocialGoogle from "components/Social/google";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
+
         <Route path="location/:id" element={<Location />} />
         <Route path="offers/:id" element={<Offers />} />
         <Route path="event/:id" element={<Event />} />
@@ -29,6 +32,14 @@ function Router() {
           <Route path="register" element={<Register />} />
         </Route>
         <Route path="edit" element={<EditProfile />} />
+        <Route
+          path="/v1/mobile/login/facebook/callback"
+          element={<SocialFacebook />}
+        />
+        <Route
+          path="/v1/mobile/login/google/callback"
+          element={<SocialGoogle />}
+        />
       </Routes>
       <PrivateModal />
     </BrowserRouter>
