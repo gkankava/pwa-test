@@ -9,11 +9,10 @@ function Offers() {
   let navigate = useNavigate();
 
   const fetchOffers = useStore((state) => state.fetchOffers);
-  const { data, fetching, fetched, canFetchNext, fetchingNext } = useStore(
-    (state) => state.offers
-  );
+  const { data, fetching, fetched, canFetchNext, fetchingNext, nextPageUrl } =
+    useStore((state) => state.offers);
   const fetchOffersNext = useStore((state) => state.fetchOffersNext);
-
+  const resetSlice = useStore((state) => state.resetSlice);
   const fetchLocation = useStore((state) => state.fetchLocation);
   const {
     location,
@@ -22,8 +21,9 @@ function Offers() {
   } = useStore((state) => state.locationItems);
 
   useEffect(() => {
+    resetSlice();
     fetchLocation(id);
-    fetchOffers(id);
+    fetchOffers(id, "events");
     // eslint-disable-next-line
   }, []);
 
@@ -33,9 +33,9 @@ function Offers() {
   return (
     <div className="offers-page">
       <Header location={location} />
-      {data.data?.map((i) => (
+      {data?.map((i, k) => (
         <DataCoverItem
-          key={i.id}
+          key={k.toString()}
           item={i}
           action={() => {
             navigate(`/event/${i.id}`);
@@ -45,7 +45,9 @@ function Offers() {
       <IOTrigger
         canFetchNext={canFetchNext}
         fetchingNext={fetchingNext}
-        fetchNext={fetchOffersNext}
+        fetchNext={
+          nextPageUrl ? fetchOffersNext : () => fetchOffers(id, "news")
+        }
       />
     </div>
   );

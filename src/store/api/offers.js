@@ -1,26 +1,47 @@
 import { getOffers, getNextLocations } from "api/lib/locations";
 
 const initialState = {
-  data: false,
+  data: [],
   fetching: false,
   fetched: false,
   error: null,
   canFetchNext: false,
   fetchingNext: false,
+  nextPageUrl: null,
 };
 
 export const offersSlice = (set, get) => ({
   offers: initialState,
-  fetchOffers: async (id) => {
-    getOffers(id)
+  fetchOffers: async (id, refer) => {
+    if (refer === "events") {
+      set((state) => ({
+        offers: {
+          ...state.offers,
+          fetching: true,
+        },
+      }));
+    } else {
+      set((state) => ({
+        offers: {
+          ...state.offers,
+          fetchingNext: true,
+        },
+      }));
+    }
+    getOffers(id, refer)
       .then((res) => {
         set((state) => ({
           offers: {
             ...state.offers,
             fetching: false,
             fetched: true,
-            data: res.data,
-            canFetchNext: res.data.next_page_url ? true : false,
+            canFetchNext: res.data.next_page_url
+              ? true
+              : refer === "events"
+              ? true
+              : false,
+            nextPageUrl: res.data.next_page_url ? res.data.next_page_url : null,
+            data: [...state.offers.data, ...res.data.data],
           },
         }));
       })
@@ -34,19 +55,27 @@ export const offersSlice = (set, get) => ({
         }));
       });
   },
-  fetchOffersNext: async () => {
-    let url = get().offers.data.next_page_url;
+  fetchOffersNext: async (refer) => {
+    let url = get().offers.nextPageUrl;
+    set((state) => ({
+      offers: {
+        ...state.offers,
+        fetchingNext: true,
+      },
+    }));
     getNextLocations(url)
       .then((res) => {
         set((state) => ({
           offers: {
             ...state.offers,
             fetchingNext: false,
-            canFetchNext: res.data.next_page_url ? true : false,
-            data: {
-              ...state.offers.data,
-              data: [...state.offers.data.data, ...res.data.data],
-            },
+            canFetchNext: res.data.next_page_url
+              ? true
+              : refer === "events"
+              ? true
+              : false,
+            nextPageUrl: res.data.next_page_url ? res.data.next_page_url : null,
+            data: [...state.offers.data, ...res.data.data],
           },
         }));
       })
@@ -59,5 +88,10 @@ export const offersSlice = (set, get) => ({
           },
         }));
       });
+  },
+  resetSlice: () => {
+    set((state) => ({
+      offers: initialState,
+    }));
   },
 });
