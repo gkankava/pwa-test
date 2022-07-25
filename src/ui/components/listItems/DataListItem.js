@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getOriginal } from "utils/imgUri";
+import { getThumb } from "utils/imgUri";
 import { formatDistance } from "utils/formatDistance";
 import { calcTimeDiff } from "utils/calcTimeDiff";
 
@@ -21,11 +21,7 @@ function DataListItem({ item, action, icon }) {
     >
       <div className="logo-container">
         {item.coupon_count > 0 && <Badge text={item.coupon_count} />}
-        <img
-          src={getOriginal(item.logo)}
-          alt="list-item-logo"
-          className="logo"
-        />
+        <img src={getThumb(item.logo)} alt="list-item-logo" className="logo" />
       </div>
 
       <div className="text-container">
