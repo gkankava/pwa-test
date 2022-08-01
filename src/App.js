@@ -6,6 +6,7 @@ import { useStore } from "store";
 import { apiCall } from "api";
 
 function App() {
+  const version = "1.0.5";
   const storeToken = useStore((state) => state.storeToken);
   const { isAuthenticated } = useStore((state) => state.currentUser);
   const [pushToken, setPushToken] = useState("");
@@ -30,7 +31,24 @@ function App() {
     //eslint-disable-next-line
   }, [pushToken, isAuthenticated]);
   if (!isLoaded) return null;
-  return <Router />;
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          backgroundColor: "green",
+          padding: "0.1em",
+          zIndex: 9999,
+          color: "#FFF",
+        }}
+      >
+        {version}
+      </div>
+      <Router />
+    </>
+  );
 }
 
 export default App;
