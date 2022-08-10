@@ -8,7 +8,7 @@ import mail from "assets/icons/mail.png";
 import web from "assets/icons/web.png";
 
 function Header({ data, toogleBs }) {
-  const { logo, title, description } = data;
+  const { logo, title, description } = data.available_locations[0];
   const toLocation = () => {
     toogleBs(true, "list", "To Location", "navigate");
   };
