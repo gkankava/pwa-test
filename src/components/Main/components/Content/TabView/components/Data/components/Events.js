@@ -27,6 +27,7 @@ function Events() {
       let newArr = filteredData.filter((i) =>
         categories.includes(i.category_id)
       );
+
       setFilteredData(newArr);
     }
     // eslint-disable-next-line
