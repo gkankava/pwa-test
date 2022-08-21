@@ -13,6 +13,9 @@ import { subscribeSlice } from "./subscribe";
 import { likeEventSlice } from "./likeEvent";
 import { likeNewsSlice } from "./likeNews";
 
+import { searchSlice } from "./search";
+import { suggestedKeywordsSlice } from "./keywords";
+
 import { couponsSlice } from "./coupons";
 
 import { categoriesSlice } from "./categories";
@@ -45,4 +48,6 @@ export {
   favouriteNewsSlice,
   gallerySlice,
   FCMSlice,
+  searchSlice,
+  suggestedKeywordsSlice,
 };

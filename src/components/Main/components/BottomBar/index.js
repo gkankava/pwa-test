@@ -18,6 +18,7 @@ function BottomBar({ activeContent, setActiveContent }) {
   const navigate = useNavigate();
   const { currentScene, setCurrentScene } = useStore((state) => state);
   const { isAuthenticated } = useStore((state) => state.currentUser);
+  const resetSearchFetched = useStore((state) => state.resetSearchFetched);
 
   const toogleMap = () => {
     setCurrentScene("tabView");
@@ -56,12 +57,13 @@ function BottomBar({ activeContent, setActiveContent }) {
     }
   };
   const toogleSearch = () => {
-    setActiveContent("tabs");
-    if (currentScene === "search") {
-      setCurrentScene("tabView");
-    } else {
-      setCurrentScene("search");
-    }
+    setCurrentScene("tabView");
+    resetSearchFetched();
+    setActiveContent((prev) => {
+      if (prev === "search") {
+        return "tabs";
+      } else return "search";
+    });
   };
 
   return (
@@ -73,7 +75,7 @@ function BottomBar({ activeContent, setActiveContent }) {
       </BottomTabBtn>
       <BottomTabBtn action={toogleSearch}>
         <SearchIcon
-          color={currentScene === "search" ? palette.green : palette.blueDark}
+          color={activeContent === "search" ? palette.green : palette.blueDark}
         />
       </BottomTabBtn>
       <BottomTabBtn action={toogleMap}>
