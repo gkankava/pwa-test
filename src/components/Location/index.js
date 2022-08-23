@@ -10,6 +10,8 @@ import StickyHeader from "./components/StickyHeader";
 import Content from "./components/Content";
 
 import { BSMap, BSKeyword } from "components/BSComps";
+import { Helmet } from "react-helmet";
+import { getOriginal } from "utils/imgUri";
 
 function Location() {
   const { id } = useParams();
@@ -90,6 +92,11 @@ function Location() {
 
   return (
     <Container>
+      <Helmet>
+        <meta property="og:title" content={location.title} />
+        <meta property="og:description" content={location.subtitle} />
+        <meta property="og:image" content={getOriginal(location.logo)} />
+      </Helmet>
       <StaticHeader
         data={location}
         toogleBs={toogleBs}

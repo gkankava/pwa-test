@@ -48,7 +48,16 @@ function Search({ id, setCurrentScene, setActiveContent }) {
       {Object.keys(searchData).map((key) => {
         return (
           <div>
-            <h4 style={{ margin: "0.5em 0" }}>{key.toUpperCase()}</h4>
+            <h4
+              style={{
+                margin: "1em 0",
+                paddingTop: "0.5em",
+                borderTop: "2px solid #CCCCCC",
+                textDecoration: "underline",
+              }}
+            >
+              {key.toUpperCase()}
+            </h4>
             <div
               style={{ display: "flex", overflow: "scroll", gridGap: "0.5em" }}
             >
@@ -71,50 +80,23 @@ function Search({ id, setCurrentScene, setActiveContent }) {
                     backgroundImage: `url(${getThumb(
                       item.gallery.data[0]?.image
                     )}`,
-                    minWidth: "140px",
-                    maxWidth: "140px",
+                    minWidth: "40vw",
+                    maxWidth: "30vw",
                     height: "200px",
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
-                    backgroundColor: "rgba(56, 56, 56, 0.3)",
+
                     justifyContent: "flex-end",
                   }}
                 >
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 3fr",
-                      flexDirection: "column",
-                      alignSelf: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      backdropFilter: "blur(5px)",
-                      padding: "0.1em",
-                    }}
-                  >
+                  <div className="titleContainer">
                     <img
                       alt={item.title}
-                      style={{
-                        width: 30,
-                        height: 30,
-                        borderRadius: 100,
-                        objectFit: "cover",
-                      }}
+                      className="searchImg"
                       src={getThumb(item.logo)}
                     />
-                    <p
-                      style={{
-                        width: "100%",
-                        textAlign: "center",
-                        maxLines: 1,
-                        overflow: "hidden",
-                        whiteSpace: "nowrap",
-                        margin: "0.5em 0",
-                      }}
-                    >
-                      {item.title}
-                    </p>
+                    <p className="searchTitle">{item.title}</p>
                   </div>
                 </div>
               ))}
