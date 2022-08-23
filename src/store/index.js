@@ -27,6 +27,8 @@ import {
   favouriteNewsSlice,
   gallerySlice,
   FCMSlice,
+  searchSlice,
+  suggestedKeywordsSlice,
 } from "./api";
 import { devtools } from "zustand/middleware";
 
@@ -71,5 +73,9 @@ export const useStore = create(
     ...gallerySlice(set, get),
     //FCM Token
     ...FCMSlice(set, get),
+    //Search
+    ...searchSlice(set, get),
+    //keywords
+    ...suggestedKeywordsSlice(set, get),
   }))
 );

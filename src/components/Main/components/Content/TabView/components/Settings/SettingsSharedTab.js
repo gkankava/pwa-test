@@ -7,6 +7,7 @@ import Filters from "./components/Filters";
 
 function SettingsSharedTab() {
   const setCurrentScene = useStore((state) => state.setCurrentScene);
+
   const onClose = () => {
     setCurrentScene("tabView");
   };
@@ -17,6 +18,7 @@ function SettingsSharedTab() {
   return (
     <div className="settings-shared-tab">
       <CloseButton action={onClose} />
+
       <Slider value={radius} setValue={setRadius} />
       <Filters />
     </div>

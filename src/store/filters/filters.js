@@ -5,12 +5,15 @@ const initialState = {
   orderBy: "updated_at",
   locations: {
     categories: [],
+    search: "",
   },
   events: {
     categories: [],
+    search: "",
   },
   news: {
     categories: [],
+    search: "",
   },
 };
 
@@ -20,6 +23,13 @@ export const filtersSlice = (set, get) => ({
     set(
       produce((state) => {
         state.filters.radius = val;
+      })
+    );
+  },
+  setSearch: (refer, val) => {
+    set(
+      produce((state) => {
+        state.filters[refer].search = val;
       })
     );
   },

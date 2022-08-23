@@ -14,9 +14,24 @@ function Locations() {
     (state) => state.locations
   );
   const fetchLocationsNext = useStore((state) => state.fetchLocationsNext);
+  const fetchLocations = useStore((state) => state.fetchLocations);
+  const userLocation = useStore((state) => state.userLocation);
+  const filters = useStore((state) => state.filters);
+  const search = useStore((state) => state.filters.locations.search);
+
+  useEffect(() => {
+    const params = {
+      longitude: userLocation?.longitude || 8.514803,
+      latitude: userLocation?.latitude || 48.5275439,
+      radius: filters?.radius || 5,
+      orderBy: filters?.orderBy || "updated_at",
+      searchQuery: search,
+    };
+    fetchLocations(params);
+    // eslint-disable-next-line
+  }, [search]);
 
   const categories = useStore((state) => state.filters.locations.categories);
-
   const [filteredData, setFilteredData] = useState(data.data);
   useEffect(() => {
     if (categories.length > 0) {
