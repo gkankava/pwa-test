@@ -11,6 +11,8 @@ import CouponModalFS from "./components/CouponModal";
 
 import { BSMap, BSKeyword, BSList } from "components/BSComps";
 import BsCoupons from "./components/BsCoupons";
+import { Helmet } from "react-helmet";
+import { getOriginal } from "utils/imgUri";
 
 function SharedPage({ data, refer, liked, toogleLike }) {
   const { title, description, id, coupon_count, gallery, available_locations } =
@@ -72,6 +74,11 @@ function SharedPage({ data, refer, liked, toogleLike }) {
 
   return (
     <div className="shared-page" style={{ height: window.innerHeight }}>
+      <Helmet>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={getOriginal(data.logo)} />
+      </Helmet>
       {couponModal.active && (
         <CouponModalFS data={couponModal.data} closeModal={closeCouponModal} />
       )}

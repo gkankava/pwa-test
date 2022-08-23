@@ -9,3 +9,49 @@
 @import "./shared-page/shared-page.scss";
 @import "./map/maps.scss";
 @import "./search/search.scss";
+
+.searchTitle {
+  width: 100%;
+  text-align: center;
+  max-lines: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0.5em 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchTitle {
+    display: none;
+  }
+}
+
+.titleContainer {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  padding: 0.1em;
+  width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .titleContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.searchImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  object-fit: cover;
+  margin-left: 0.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchImg {
+    justify-self: center;
+  }
+}

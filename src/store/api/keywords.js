@@ -2,7 +2,6 @@ import {
   getNextSuggestedKeywords,
   getSuggestedKeywords,
 } from "api/lib/keywords";
-import { getNextSearch, getSearch } from "api/lib/search";
 
 const initialState = {
   data: false,
