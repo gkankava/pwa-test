@@ -1,7 +1,7 @@
 import React from "react";
 import { useStore } from "store";
 
-import { CloseButton } from "ui/components";
+import { Button, CloseButton } from "ui/components";
 import Slider from "./components/Slider";
 import Filters from "./components/Filters";
 
@@ -17,7 +17,10 @@ function SettingsSharedTab() {
 
   return (
     <div className="settings-shared-tab">
-      <CloseButton action={onClose} />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <CloseButton action={onClose} />
+        <Button action={onClose} label="OK" />
+      </div>
 
       <Slider value={radius} setValue={setRadius} />
       <Filters />

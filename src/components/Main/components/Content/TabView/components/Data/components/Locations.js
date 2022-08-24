@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "store";
 
-import { IOTrigger, ListView, GridView, CoverView } from "ui/components";
+import {
+  IOTrigger,
+  ListView,
+  GridView,
+  CoverView,
+  AppLoading,
+} from "ui/components";
 
 function Locations() {
   let navigate = useNavigate();
@@ -15,6 +21,8 @@ function Locations() {
   );
   const fetchLocationsNext = useStore((state) => state.fetchLocationsNext);
   const fetchLocations = useStore((state) => state.fetchLocations);
+  const { fetching } = useStore((state) => state.locations);
+
   const userLocation = useStore((state) => state.userLocation);
   const filters = useStore((state) => state.filters);
   const search = useStore((state) => state.filters.locations.search);
@@ -35,15 +43,15 @@ function Locations() {
   const [filteredData, setFilteredData] = useState(data.data);
   useEffect(() => {
     if (categories.length > 0) {
-      let newArr = filteredData.filter((i) =>
-        categories.includes(i.category_id)
-      );
+      let newArr = data.data.filter((i) => categories.includes(i.category_id));
       setFilteredData(newArr);
     }
-    // eslint-disable-next-line
-  }, [categories]);
+    setFilteredData(data.data);
 
-  if (!data.data) return null;
+    // eslint-disable-next-line
+  }, [categories, data]);
+
+  if (!data.data || fetching) return <AppLoading />;
 
   return (
     <>
