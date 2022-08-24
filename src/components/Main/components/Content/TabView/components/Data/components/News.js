@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "store";
 
-import { IOTrigger, ListView, GridView, CoverView } from "ui/components";
+import {
+  IOTrigger,
+  ListView,
+  GridView,
+  CoverView,
+  AppLoading,
+} from "ui/components";
 
 function News() {
   let navigate = useNavigate();
@@ -13,6 +19,7 @@ function News() {
   const look = useStore((state) => state.look);
   const { data, canFetchNext, fetchingNext } = useStore((state) => state.news);
   const fetchNewsNext = useStore((state) => state.fetchNewsNext);
+  const { fetching } = useStore((state) => state.locations);
 
   const categoriesList = useStore((state) => state.categories.news.data.data);
   const categories = useStore((state) => state.filters.news.categories);
@@ -36,14 +43,14 @@ function News() {
   }, [search]);
   useEffect(() => {
     if (categories.length > 0) {
-      let newArr = filteredData.filter((i) =>
-        categories.includes(i.category_id)
-      );
+      let newArr = data.data.filter((i) => categories.includes(i.category_id));
       setFilteredData(newArr);
     }
+    setFilteredData(data.data);
     // eslint-disable-next-line
-  }, [categories]);
-  if (!data.data) return null;
+  }, [categories, data]);
+
+  if (!data.data || fetching) return <AppLoading />;
 
   return (
     <>
