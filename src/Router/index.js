@@ -15,6 +15,7 @@ import EditProfile from "components/EditProfile";
 import Story from "components/Story";
 import SocialFacebook from "components/Social/facebook";
 import SocialGoogle from "components/Social/google";
+import SocialApple from "components/Social/apple";
 
 function Router() {
   return (
@@ -39,6 +40,10 @@ function Router() {
         <Route
           path="/v1/mobile/login/google/callback"
           element={<SocialGoogle />}
+        />
+        <Route
+          path="/v1/mobile/login/apple/callback"
+          element={<SocialApple />}
         />
       </Routes>
       <PrivateModal />
