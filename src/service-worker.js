@@ -15,7 +15,7 @@ import { StaleWhileRevalidate } from "workbox-strategies";
 
 clientsClaim();
 
-const version = "1.1.5";
+const version = "1.1.6";
 
 console.log(version);
 

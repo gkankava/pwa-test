@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { getFacebookToken, getGoogleToken } from "api/lib/social";
 import useScript from "utils/useScript";
 import { generateQueryString } from "utils/generateQueryString";
+import facebookIco from "../../../assets/icons/facebook.svg";
+import googleIco from "../../../assets/icons/google.svg";
+
 function AuthLanding() {
   const authOptions = {
     clientId: "de.yezzgo.app-service",
@@ -86,18 +89,53 @@ function AuthLanding() {
           <span>oder login mit</span>
           <hr />
         </div>
-        <Button
+        <button
           onClick={navigateFacebook}
           type="secondary"
-          label="Facebook"
-          style={{ marginTop: "10px" }}
-        />
-        <Button
+          style={{
+            borderRadius: "0.5em",
+            marginTop: "10px",
+            backgroundColor: "#1B77F2",
+            color: "#FFF",
+            height: "33px",
+            border: "none",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            alt="facebook auth"
+            src={facebookIco}
+            style={{ marginRight: "0.2em", width: "15px", height: "15px" }}
+          />
+          Log in with Facebook
+        </button>
+        <button
           onClick={navigateGoogle}
           type="secondary"
-          label="Google+"
-          style={{ marginTop: "10px" }}
-        />
+          style={{
+            borderRadius: "0.5em",
+            marginTop: "10px",
+            backgroundColor: "#4286F5",
+            color: "#FFF",
+            height: "33px",
+            border: "none",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            alt="google auth"
+            src={googleIco}
+            style={{ marginRight: "0.4em", width: "15px", height: "15px" }}
+          />
+          Sign in with Google
+        </button>
+
         <div
           style={{
             flexDirection: "column",
