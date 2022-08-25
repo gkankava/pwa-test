@@ -15,3 +15,7 @@ export function getGoogleToken() {
 export function loginGoogle(code) {
   return apiCall.get(`/mobile/login/google/callback?code=${code}`);
 }
+
+export function loginApple(code) {
+  return apiCall.get(`/mobile/login/apple/callback?code=${code}`);
+}
