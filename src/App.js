@@ -6,7 +6,7 @@ import { useStore } from "store";
 import { apiCall } from "api";
 
 function App() {
-  const version = "1.1.5";
+  const version = "1.1.6";
   const storeToken = useStore((state) => state.storeToken);
   const { isAuthenticated } = useStore((state) => state.currentUser);
   const [pushToken, setPushToken] = useState("");
