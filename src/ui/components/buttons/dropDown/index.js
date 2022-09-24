@@ -5,7 +5,7 @@ import { Touchable } from "../..";
 import Content from "./Content";
 import dotsIco from "assets/icons/dots.png";
 
-function DropDownButton({ children, top = 80 }) {
+function DropDownButton({ children, top = 32 }) {
   const [show, setShow] = useState(false);
   const touchableRef = useRef(null);
   const toogle = () => {

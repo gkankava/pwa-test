@@ -5,6 +5,7 @@ export function getLocations(params) {
     params: {
       ...params,
       locationGallery: true,
+      businessOpeningHours: true,
     },
   });
 }
@@ -17,6 +18,15 @@ export function getLocation(id) {
   return apiCall.get(`/mobile/locations/${id}`);
 }
 
-export function getOffers(id) {
-  return apiCall.get(`/mobile/offers?location=${id}&news=true&events=true`);
+export function getOffers(id, refer) {
+  return apiCall.get(`/mobile/offers?location=${id}&${refer}=true`);
+}
+
+export function getFavoriteLocations(params) {
+  return apiCall.get(`/mobile/subscribe`, {
+    params: {
+      ...params,
+      locationGallery: true,
+    },
+  });
 }

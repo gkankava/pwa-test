@@ -42,7 +42,7 @@ function Event() {
   return (
     <SharedPage
       data={event}
-      refer={"event"}
+      refer={"events"}
       liked={event.user_favorite_events}
       toogleLike={toogleLike}
     />

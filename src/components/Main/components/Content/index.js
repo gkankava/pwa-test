@@ -5,6 +5,7 @@ import MapView from "./Map";
 import Look from "./Look";
 import Profile from "./Profile";
 import { hasHomeBar } from "utils/device";
+import Search from "./Search";
 
 function Content({ activeContent, setActiveContent }) {
   return (
@@ -12,7 +13,9 @@ function Content({ activeContent, setActiveContent }) {
       className="main-content-container"
       style={{ paddingBottom: hasHomeBar() ? "80px" : "60px" }}
     >
-      {activeContent === "tabs" ? (
+      {activeContent === "search" ? (
+        <Search setActiveContent={setActiveContent} />
+      ) : activeContent === "tabs" ? (
         <TabView activeContent={activeContent} />
       ) : activeContent === "map" ? (
         <MapView />

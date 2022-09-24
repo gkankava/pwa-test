@@ -16,6 +16,7 @@ function BsCoupons({ id, openModal }) {
   useEffect(() => {
     fetchCouponsByNews(id);
     return () => resetCoupons();
+    // eslint-disable-next-line
   }, []);
   if (fetching || !fetched)
     return (

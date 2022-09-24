@@ -6,8 +6,6 @@ import CategoryItem from "../categories/CategoryItem";
 function NewsCategories() {
   const {
     data: { data },
-    canFetchNext,
-    fetchingNext,
   } = useStore((state) => state.categories.news);
 
   const list = useStore((state) => state.filters.news.categories);

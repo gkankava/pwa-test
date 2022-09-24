@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "seeme-mobile-app",
+    "slug": "seeme-mobile-app",
+    "version": "1.0.5",
+    "owner": "smy",
+    "orientation": "portrait",
+    "icon": "./assets/app-icons/icon.png",
+    "splash": {
+      "image": "./assets/splash/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "App would like to access your current location",
+        "NSLocationAlwaysUsageDescription": "App would like to access your current location"
+      },
+      "bundleIdentifier": "com.smy.seememobileapp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/app-icons/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
+      "package": "com.smy.seememobileapp"
+    },
+    "web": {
+      "build": {
+        "babel": {
+          "include": ["@miblanchard/react-native-slider"]
+        }
+      }
+    },
+    "description": ""
+  }
+}

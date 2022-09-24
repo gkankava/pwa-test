@@ -10,12 +10,16 @@
     padding: 0 $m;
     width: 100%;
     .follow-btn {
-      margin-left: auto;
       img {
         width: 20px;
         height: 20px;
         object-fit: contain;
       }
+    }
+    .chat-ico{
+
+      margin-right: 10px;
+      // margin-left: auto;
     }
   }
   .head-swiper-container {
@@ -76,8 +80,20 @@
       width: 70px;
       border-radius: 50%;
       border: 3px solid #3b7be0;
-      margin-left: 45px;
+
       // transform: scale(0.6) translateX(50px);
+    }
+    .rainbow {
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        border: none;
+        transform: scale(0.97);
+        background: rgb(255, 255, 255);
+        cursor: pointer;
+        // transform: scale(0.6) translateX(50px);
+      }
     }
     .text-container {
       display: flex;
@@ -88,7 +104,8 @@
       .title {
         font-size: 18px;
         color: white;
-        font-family: $semiLight;
+        font-family: $semiLight;  
+        line-break:strict;
       }
       .sub-title {
         font-size: 15px;
@@ -106,6 +123,7 @@
         -webkit-box-orient: vertical;
       }
     }
+
   }
   .content {
     padding: $m;
@@ -227,5 +245,54 @@
     .accordion-active {
       max-height: 500px;
     }
+  }
+}
+
+.ml-rainbow {
+  margin-left: 45px;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.rainbow {
+  margin-left: 45px;
+  position: relative;
+  z-index: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 100% !important;
+  overflow: hidden;
+  // padding: 1rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #a9da3a;
+    background-repeat: no-repeat;
+    background-size: 520% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#420ed1, #c7ff0e),
+      linear-gradient(#420ed1, #c7ff0e), linear-gradient(#c7ff0e, #420ed1),
+      linear-gradient(#c7ff0e, #420ed1);
+    animation: rotate 2s linear infinite;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    border-radius: 100%;
   }
 }

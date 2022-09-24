@@ -15,3 +15,7 @@ export const authLogout = () => {
 export const authUpdate = (params) => {
   return apiCall.put(`/mobile/auth/update`, params);
 };
+
+export const getMe = () => {
+  return apiCall.get(`/mobile/me`);
+};

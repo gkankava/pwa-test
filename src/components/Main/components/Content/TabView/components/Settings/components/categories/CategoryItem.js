@@ -5,7 +5,6 @@ import { Touchable } from "ui/components";
 import SMIcon from "ui/sm-icons";
 
 function CategoryItem({ item, active, toogle }) {
-  console.log(item);
   return (
     <Touchable
       action={() => {

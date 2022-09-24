@@ -1,4 +1,5 @@
 import { locationsSlice } from "./locations";
+
 import { eventsSlice } from "./events";
 import { newsSlice } from "./news";
 
@@ -12,10 +13,23 @@ import { subscribeSlice } from "./subscribe";
 import { likeEventSlice } from "./likeEvent";
 import { likeNewsSlice } from "./likeNews";
 
+import { searchSlice } from "./search";
+import { suggestedKeywordsSlice } from "./keywords";
+
 import { couponsSlice } from "./coupons";
 
 import { categoriesSlice } from "./categories";
 import { byKewordsSlise } from "./dataByKeywords";
+
+import { favouriteLocationsSlice } from "./favouriteLocations";
+import { favouriteEventsSlice } from "./favouriteEvents";
+import { favouriteNewsSlice } from "./favouriteNews";
+
+import { gallerySlice } from "./gallery";
+
+import { FCMSlice } from "./token";
+
+import { chatSlice } from "./chat";
 
 export {
   locationsSlice,
@@ -31,4 +45,12 @@ export {
   couponsSlice,
   categoriesSlice,
   byKewordsSlise,
+  favouriteLocationsSlice,
+  favouriteEventsSlice,
+  favouriteNewsSlice,
+  gallerySlice,
+  FCMSlice,
+  searchSlice,
+  suggestedKeywordsSlice,
+  chatSlice,
 };

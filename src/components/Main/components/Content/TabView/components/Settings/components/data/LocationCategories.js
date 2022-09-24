@@ -6,8 +6,6 @@ import CategoryItem from "../categories/CategoryItem";
 function LocationCategories() {
   const {
     data: { data },
-    canFetchNext,
-    fetchingNext,
   } = useStore((state) => state.categories.locations);
 
   const list = useStore((state) => state.filters.locations.categories);

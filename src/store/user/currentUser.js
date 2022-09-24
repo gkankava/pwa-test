@@ -1,7 +1,13 @@
 import { setTokenHeader } from "api";
-import { authLogin, authRegister, authLogout, authUpdate } from "api/lib/user";
+import {
+  authLogin,
+  authRegister,
+  authLogout,
+  authUpdate,
+  getMe,
+} from "api/lib/user";
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem("jwtToken") ? true : false,
   user: {},
   fetching: false,
   fetched: false,
@@ -11,7 +17,15 @@ const initialState = {
 export const currentUserSlice = (set, get) => ({
   currentUser: initialState,
   setCurrentUser: (currentUser) => {
-    set(() => ({ currentUser }));
+    console.log(currentUser);
+    set(() => ({
+      currentUser: {
+        ...currentUser,
+        fetched: false,
+        fetching: true,
+        isAuthenticated: true,
+      },
+    }));
   },
   loginUser: async (data) => {
     set((state) => ({
@@ -49,10 +63,10 @@ export const currentUserSlice = (set, get) => ({
   logOutUser: async () => {
     authLogout().then((res) => {
       localStorage.removeItem("jwtToken");
-      set((state) => ({
-        currentUser: initialState,
-      }));
       setTokenHeader();
+      set((state) => ({
+        currentUser: { ...initialState, isAuthenticated: false },
+      }));
     });
   },
   registerUser: async (data) => {
@@ -88,7 +102,35 @@ export const currentUserSlice = (set, get) => ({
         }));
       });
   },
-  fetchUserData: async () => {},
+  fetchUserData: async () => {
+    set((state) => ({
+      currentUser: { ...state.currentUser, fetching: true },
+    }));
+
+    getMe()
+      .then((res) => {
+        set((state) => {
+          console.log(state.currentUser);
+          return {
+            currentUser: {
+              ...state.currentUser,
+              fetching: false,
+              fetched: true,
+              user: res.data.user,
+            },
+          };
+        });
+      })
+      .catch((err) => {
+        set((state) => ({
+          currentUser: {
+            ...state.currentUser,
+            fetching: false,
+            error: err.response,
+          },
+        }));
+      });
+  },
   updateUser: async (params) => {
     authUpdate(params)
       .then((res) => {
