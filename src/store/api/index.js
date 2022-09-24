@@ -29,6 +29,8 @@ import { gallerySlice } from "./gallery";
 
 import { FCMSlice } from "./token";
 
+import { chatSlice } from "./chat";
+
 export {
   locationsSlice,
   eventsSlice,
@@ -50,4 +52,5 @@ export {
   FCMSlice,
   searchSlice,
   suggestedKeywordsSlice,
+  chatSlice,
 };

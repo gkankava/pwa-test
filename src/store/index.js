@@ -1,6 +1,11 @@
 import create from "zustand";
 
-import { languageSlice, appLoadingSlice, triggerProfileSlice } from "./app";
+import {
+  languageSlice,
+  appLoadingSlice,
+  triggerProfileSlice,
+  routeSlice,
+} from "./app";
 import { filterModalSlice, privateModalSlice } from "./modal";
 import { userLocationSlice } from "./userLocation";
 import { currentUserSlice } from "./user";
@@ -29,6 +34,7 @@ import {
   FCMSlice,
   searchSlice,
   suggestedKeywordsSlice,
+  chatSlice,
 } from "./api";
 import { devtools } from "zustand/middleware";
 
@@ -44,6 +50,7 @@ export const useStore = create(
     ...privateModalSlice(set, get),
     ...filtersSlice(set, get),
     ...viewModeSlice(set, get),
+    ...routeSlice(set, get),
     //api lvl
     //  lists
     ...locationsSlice(set, get),
@@ -77,5 +84,7 @@ export const useStore = create(
     ...searchSlice(set, get),
     //keywords
     ...suggestedKeywordsSlice(set, get),
+    //chat
+    ...chatSlice(set, get),
   }))
 );

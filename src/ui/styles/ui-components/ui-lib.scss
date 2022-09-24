@@ -27,6 +27,9 @@
 }
 
 .btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
     height: 30px;
     width: 30px;

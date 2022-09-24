@@ -103,6 +103,7 @@ function Location() {
         subscribed={location.user_subscribed_location}
         subscribe={subscribe}
         unSubscribe={unSubscribe}
+        isAuthenticated={isAuthenticated}
       />
       <GallerySwiper data={location.gallery} />
       <StickyHeader data={location} offsetY={offsetY} />

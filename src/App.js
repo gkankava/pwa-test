@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import Router from "Router";
-import { requestForToken } from "./firebase";
+import { requestForToken, onMessageListener } from "./firebase";
 import { useStore } from "store";
 import { apiCall } from "api";
 
@@ -18,6 +18,7 @@ function App() {
     if (isAuthenticated) requestForToken(setPushToken);
     // eslint-disable-next-line
   }, []);
+
   useEffect(() => {
     if (
       isAuthenticated &&
@@ -30,12 +31,22 @@ function App() {
       });
     //eslint-disable-next-line
   }, [pushToken, isAuthenticated]);
+
+  onMessageListener()
+    .then((payload) => {
+      console.log("RECEIVE MESSAGE", payload);
+      if (true) {
+      } else {
+      }
+    })
+    .catch((err) => console.log("failed: ", err));
+
   if (!isLoaded) return null;
   return (
     <>
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 0,
           right: 0,
           backgroundColor: "green",

@@ -10,12 +10,16 @@
     padding: 0 $m;
     width: 100%;
     .follow-btn {
-      margin-left: auto;
       img {
         width: 20px;
         height: 20px;
         object-fit: contain;
       }
+    }
+    .chat-ico{
+
+      margin-right: 10px;
+      // margin-left: auto;
     }
   }
   .head-swiper-container {
@@ -100,7 +104,8 @@
       .title {
         font-size: 18px;
         color: white;
-        font-family: $semiLight;
+        font-family: $semiLight;  
+        line-break:strict;
       }
       .sub-title {
         font-size: 15px;
@@ -118,6 +123,7 @@
         -webkit-box-orient: vertical;
       }
     }
+
   }
   .content {
     padding: $m;

@@ -10,6 +10,9 @@ import Auth from "components/Auth";
 import Login from "components/Auth/components/Login";
 import Register from "components/Auth/components/Register";
 
+import Chats from "components/Chats";
+import ChatScreen from "components/ChatScreen";
+
 import { PrivateModal } from "ui/components";
 import EditProfile from "components/EditProfile";
 import Story from "components/Story";
@@ -28,6 +31,8 @@ function Router() {
         <Route path="event/:id" element={<Event />} />
         <Route path="news/:id" element={<News />} />
         <Route path="story/:id" element={<Story />} />
+        <Route path="chats" element={<Chats />} />
+        <Route path="chats/:id/:companyId" element={<ChatScreen />} />
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
